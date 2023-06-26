@@ -1,36 +1,34 @@
-import React, {useState} from 'react'
+import React, {useState} from 'react';
 import NewTodo from './NewTodo';
-import Todo from './Todo'
+import Todo from './Todo';
+import { useSelector } from 'react-redux';
+
 
 export default function Todos() {
+  const todos = useSelector((state) => state.todos);
 
-  const [demoTodos, setDemoTodos] = useState([
-    { id: 1, text: 'Finish homework', completed: false },
-    { id: 2, text: 'Go grocery shopping', completed: true }
-  ]);
+  // // eslint-disable-next-line no-debugger
+  // debugger;
 
-  
   const [showNewTodo, setShowNewTodo] = useState(false);
 
   const handleCreate = () => {
+    console.log(todos);
     setShowNewTodo(true);
-  }
+  };
 
-  const handleNewSave = (todoText) => {
-    const newTodo = {
-      id: demoTodos.length + 1,
-      text: todoText,
-      completed: false
-    };
-    setDemoTodos([...demoTodos, newTodo]);
+  const handleNewSave = () => {
     setShowNewTodo(false);
   };
 
   return (
     <div>
       <button onClick={handleCreate}>Create</button>
-      {showNewTodo && <NewTodo handleNewSave={handleNewSave}/>}
-      {demoTodos.map( todo => <Todo key = {todo.id} text={todo.text }/>)};
+      {showNewTodo && <NewTodo handleNewSave={handleNewSave} />}
+      {todos.map((todo, index) => (
+        <Todo key={index} text={todo.text} />
+      ))}
+      ;
     </div>
-  )
+  );
 }

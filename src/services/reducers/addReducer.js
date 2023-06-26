@@ -1,17 +1,42 @@
+// import { ADD } from "../constants/constants";
 
-import { ADD } from "../constants/constants";
-
-const initialTodos = { todos: [] }
+const initialTodos = {
+  todos: [
+    { text: "Finish homework", completed: false },
+    { text: "Go grocery shopping", completed: true },
+  ],
+  showNewTodoForm: false
+};
 
 const addReducer = (state=initialTodos, action) => {
-  switch (action.type){
-    case ADD:
+  let newTodo;
+  // eslint-disable-next-line no-debugger
+  debugger;
+  switch (action.type) {
+    case "ADD":
+      newTodo = {
+        text: action.payload.text,
+        completed: false,
+      };
       return {
+        ...state,
+        todos: [newTodo, ...state.todos],
+      };
 
-      }
-    
-      default: 
-        return {}
+    case "FORM_CLOSE/OPEN":
+      newTodo = {
+        text: action.payload.text,
+        completed: false,
+      };
+      return {
+        ...state,
+        todos: [newTodo, ...state.todos],
+      };
+
+    default:
+      return {
+        ...state,
+      };
   }
 }
 
