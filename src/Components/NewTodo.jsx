@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addTodo } from '../services/actions/addTodo';
 
-export default function NewTodo() {
+export default function NewTodo(props) {
+  const { handleNewSave } = props;
   const [todoText, setTodoText] = useState('');
 
   const dispatch = useDispatch();
@@ -14,6 +15,7 @@ export default function NewTodo() {
       })
     );
     e.preventDefault();
+    handleNewSave(todoText);
     setTodoText("");
   };
 

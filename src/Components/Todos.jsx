@@ -19,11 +19,17 @@ export default function Todos() {
   return (
     <div>
       <button onClick={handleCreate}>Create</button>
-      {showNewTodoForm && <NewTodo handleNewSave={handleNewSave} />}
-      {todos.map((todo, index) => (
-        <Todo key={index} text={todo.text} />
-      ))}
-      ;
+      <br />
+      <div className="todo-container">
+        <div className="todos-row">
+          {showNewTodoForm && (
+            <NewTodo className="todo-item" handleNewSave={handleNewSave} />
+          )}
+          {todos.map((todo, index) => (
+            <Todo className="todo-item" key={index} text={todo.text} />
+          ))}
+        </div>
+      </div>
     </div>
   );
 }

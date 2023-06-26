@@ -13,6 +13,7 @@ const addReducer = (state=initialTodos, action) => {
     case "ADD":
       newTodo = {
         text: action.payload.text,
+        created_at: action.payload.created_at,
         completed: false,
       };
       return {

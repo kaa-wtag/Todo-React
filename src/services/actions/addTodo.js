@@ -6,6 +6,7 @@ export const addTodo = (props) => {
     type: 'ADD',
     payload: {
       text: text,
+      created_at: new Date()
     },
   };
 }
