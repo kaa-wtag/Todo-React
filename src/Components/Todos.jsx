@@ -18,7 +18,9 @@ export default function Todos() {
 
   return (
     <div>
+      <h1>Add Tasks</h1>
       <button onClick={handleCreate}>Create</button>
+      <br />
       <br />
       <div className="todo-container">
         <div className="todos-row">
@@ -26,7 +28,12 @@ export default function Todos() {
             <NewTodo className="todo-item" handleNewSave={handleNewSave} />
           )}
           {todos.map((todo, index) => (
-            <Todo className="todo-item" key={index} text={todo.text} created_at= {todo.created_at} />
+            <Todo
+              className="todo-item"
+              key={index}
+              text={todo.text}
+              created_at={todo.created_at}
+            />
           ))}
         </div>
       </div>

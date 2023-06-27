@@ -37,7 +37,7 @@ export default function NewTodo(props) {
           value={todoText}
           onChange={(e) => setTodoText(e.target.value)}
         />
-        <button type="submit">Save</button>
+        <button type="submit">Add Task</button>
       </form>
     </div>
   );
