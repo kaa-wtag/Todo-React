@@ -8,7 +8,7 @@ const initialTodos = {
 };
 
 const addReducer = (state=initialTodos, action) => {
-  let newTodo;
+  let newTodo, filteredTodos;
   switch (action.type) {
     case "ADD":
       newTodo = {
@@ -19,6 +19,14 @@ const addReducer = (state=initialTodos, action) => {
       return {
         ...state,
         todos: [newTodo, ...state.todos],
+      };
+    case "DELETE":
+      filteredTodos = state.todos.filter(
+        (todo, index) => index !== action.payload.index
+      );
+      return {
+        ...state,
+        todos: filteredTodos,
       };
     default:
       return {

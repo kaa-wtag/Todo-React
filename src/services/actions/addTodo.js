@@ -10,3 +10,12 @@ export const addTodo = (props) => {
     },
   };
 }
+
+export const deleteTodo = (index) => {
+  return {
+    type: "DELETE",
+    payload: {
+      index: index,
+    },
+  };
+};
