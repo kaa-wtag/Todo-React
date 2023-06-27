@@ -1,12 +1,12 @@
 // import { ADD } from "../constants/constants"
 
 export const addTodo = (props) => {
-  const { text } = props;
+  const { text, created_at } = props;
   return {
-    type: 'ADD',
+    type: "ADD",
     payload: {
       text: text,
-      created_at: new Date()
+      created_at: created_at,
     },
   };
 }

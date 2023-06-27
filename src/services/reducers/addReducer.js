@@ -2,8 +2,8 @@
 
 const initialTodos = {
   todos: [
-    { text: "Finish homework", completed: false },
-    { text: "Go grocery shopping", completed: true },
+    { text: "Finish homework", created_at: '27.06.2023', completed: false },
+    { text: "Go grocery shopping", created_at: '27.06.2023', completed: true },
   ]
 };
 

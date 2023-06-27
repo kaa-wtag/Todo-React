@@ -1,7 +1,7 @@
 import React from 'react'
 
 export default function Todo(props) {
-  const {text, created_at} = props
+  const { text, created_at } = props;
   return (
     <div className="todo-card">
       <h1 className="todo-card-title">{text}</h1>
