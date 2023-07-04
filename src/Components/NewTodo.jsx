@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addTodo } from '../services/actions/addTodo';
+import { addTodo } from "services/actions/addTodo";
 
 export default function NewTodo(props) {
   const { handleNewSave } = props;

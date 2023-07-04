@@ -1,6 +1,6 @@
-import React from 'react';
-import logo from '../assets/logo.png';
-import search from '../assets/search.png';
+import React from "react";
+import logo from "Assets/images/logo.png";
+import search from "Assets/images/search.png";
 
 const Navbar = () => {
   return (
