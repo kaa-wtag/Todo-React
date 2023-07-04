@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { Fragment, useState } from "react";
 import NewTodo from "Components/NewTodo";
 import Todo from "Components/Todo";
 import { useSelector } from "react-redux";
@@ -17,7 +17,7 @@ export default function Todos() {
   };
 
   return (
-    <div>
+    <Fragment>
       <h1>Add Tasks</h1>
       <button onClick={handleCreate}>Create</button>
       <br />
@@ -32,11 +32,11 @@ export default function Todos() {
               className="todo-item"
               key={index}
               text={todo.text}
-              created_at={todo.created_at}
+              createdAt={todo.createdAt}
             />
           ))}
         </div>
       </div>
-    </div>
+    </Fragment>
   );
 }

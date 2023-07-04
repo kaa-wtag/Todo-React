@@ -2,18 +2,18 @@
 
 const initialTodos = {
   todos: [
-    { text: "Finish homework", created_at: '27.06.2023', completed: false },
-    { text: "Go grocery shopping", created_at: '27.06.2023', completed: true },
-  ]
+    { text: "Finish homework", createdAt: "27.06.2023", completed: false },
+    { text: "Go grocery shopping", createdAt: "27.06.2023", completed: true },
+  ],
 };
 
-const addReducer = (state=initialTodos, action) => {
+const addReducer = (state = initialTodos, action) => {
   let newTodo;
   switch (action.type) {
     case "ADD":
       newTodo = {
         text: action.payload.text,
-        created_at: action.payload.created_at,
+        createdAt: action.payload.createdAt,
         completed: false,
       };
       return {
@@ -25,6 +25,6 @@ const addReducer = (state=initialTodos, action) => {
         ...state,
       };
   }
-}
+};
 
 export default addReducer;

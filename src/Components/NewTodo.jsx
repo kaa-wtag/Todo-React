@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { addTodo } from "services/actions/addTodo";
 
 export default function NewTodo(props) {
   const { handleNewSave } = props;
-  const [todoText, setTodoText] = useState("");
+  const [todoText, setTodoText] = useState(null);
 
   const dispatch = useDispatch();
 
@@ -16,17 +16,16 @@ export default function NewTodo(props) {
     return `${day}.${month}.${year}`;
   };
 
-
-  const handleSubmit = (e) => {
+  const handleSubmit = (event) => {
     dispatch(
       addTodo({
         text: todoText,
-        created_at: formatedDate(),
+        createdAt: formatedDate(),
       })
     );
-    e.preventDefault();
+    event.preventDefault();
     handleNewSave(todoText);
-    setTodoText("");
+    setTodoText(null);
   };
 
   return (
@@ -35,7 +34,7 @@ export default function NewTodo(props) {
         <input
           type="text"
           value={todoText}
-          onChange={(e) => setTodoText(e.target.value)}
+          onChange={(event) => setTodoText(event.target.value)}
         />
         <button type="submit">Add Task</button>
       </form>
