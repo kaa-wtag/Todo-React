@@ -1,9 +1,9 @@
-// import { ADD } from "../constants/constants";
+import { v4 as uuidv4 } from "uuid";
 
 const initialTodos = {
   todos: [
-    { text: "Finish homework", createdAt: "27.06.2023" },
-    { text: "Go grocery shopping", createdAt: "27.06.2023" },
+    { id: uuidv4(), text: "Finish homework", createdAt: "27.06.2023" },
+    { id: uuidv4(), text: "Go grocery shopping", createdAt: "27.06.2023" },
   ],
 };
 
@@ -11,6 +11,7 @@ const addReducer = (state = initialTodos, action) => {
   switch (action.type) {
     case "ADD":
       const newTodo = {
+        id: uuidv4(),
         text: action.payload.text,
         createdAt: action.payload.createdAt,
       };
@@ -19,9 +20,7 @@ const addReducer = (state = initialTodos, action) => {
         todos: [newTodo, ...state.todos],
       };
     default:
-      return {
-        ...state,
-      };
+      return state;
   }
 };
 

@@ -1,14 +1,14 @@
-import React, { useState } from "react";
+import React, { Fragment, useState } from "react";
 import { useDispatch } from "react-redux";
 import { addTodo } from "services/actions/addTodo";
 
 export default function NewTodo(props) {
-  const { handleNewSave } = props;
+  const { onNewSave } = props;
   const [todoText, setTodoText] = useState(null);
 
   const dispatch = useDispatch();
 
-  const formatedDate = () => {
+  const formatDate = () => {
     const today = new Date();
     const day = String(today.getDate()).padStart(2, "0");
     const month = String(today.getMonth() + 1).padStart(2, "0"); // Month is zero-based
@@ -16,21 +16,21 @@ export default function NewTodo(props) {
     return `${day}.${month}.${year}`;
   };
 
-  const handleSubmit = (event) => {
+  const handleFormSubmit = (event) => {
     dispatch(
       addTodo({
         text: todoText,
-        createdAt: formatedDate(),
+        createdAt: formatDate(),
       })
     );
     event.preventDefault();
-    handleNewSave(todoText);
+    onNewSave(todoText);
     setTodoText(null);
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
+    <Fragment>
+      <form onSubmit={handleFormSubmit}>
         <input
           type="text"
           value={todoText}
@@ -38,6 +38,6 @@ export default function NewTodo(props) {
         />
         <button type="submit">Add Task</button>
       </form>
-    </div>
+    </Fragment>
   );
 }

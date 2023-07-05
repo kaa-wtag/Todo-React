@@ -12,25 +12,28 @@ export default function Todos() {
     setShowNewTodoForm(true);
   };
 
-  const handleNewSave = () => {
+  const onNewSave = () => {
     setShowNewTodoForm(false);
   };
 
   return (
     <Fragment>
-      <h1>Add Tasks</h1>
-      <button onClick={handleCreate}>Create</button>
-      <br />
-      <br />
-      <div className="todo-container">
-        <div className="todos-row">
+      <h1 className="todos__title">Add Tasks</h1>
+      <button
+        className="todos__button todos__button--create"
+        onClick={handleCreate}
+      >
+        Create
+      </button>
+      <div className="todos__container">
+        <div className="todos__row">
           {showNewTodoForm && (
-            <NewTodo className="todo-item" handleNewSave={handleNewSave} />
+            <NewTodo className="todos__item" onNewSave={onNewSave} />
           )}
           {todos.map((todo, index) => (
             <Todo
-              className="todo-item"
-              key={index}
+              className="todos__item"
+              key={todo.id}
               text={todo.text}
               createdAt={todo.createdAt}
             />
