@@ -1,38 +1,36 @@
-// import { ADD } from "../constants/constants";
+import { v4 as uuidv4 } from "uuid";
+import { formatDate } from "Helpers/helpers";
 
 const initialTodos = {
-  todos: [
-    { text: "Finish homework", created_at: '27.06.2023', completed: false },
-    { text: "Go grocery shopping", created_at: '27.06.2023', completed: true },
-  ]
+    todos: [
+        { id: uuidv4(), text: "Finish homework", createdAt: "27.06.2023" },
+        { id: uuidv4(), text: "Go grocery shopping", createdAt: "27.06.2023" },
+    ],
 };
 
-const addReducer = (state=initialTodos, action) => {
-  let newTodo, filteredTodos;
-  switch (action.type) {
-    case "ADD":
-      newTodo = {
-        text: action.payload.text,
-        created_at: action.payload.created_at,
-        completed: false,
-      };
-      return {
-        ...state,
-        todos: [newTodo, ...state.todos],
-      };
-    case "DELETE":
-      filteredTodos = state.todos.filter(
-        (todo, index) => index !== action.payload.index
-      );
-      return {
-        ...state,
-        todos: filteredTodos,
-      };
-    default:
-      return {
-        ...state,
-      };
-  }
-}
+const addReducer = (state = initialTodos, action) => {
+    switch (action.type) {
+        case "ADD":
+            const newTodo = {
+                id: uuidv4(),
+                text: action.payload.text,
+                createdAt: formatDate(),
+            };
+            return {
+                ...state,
+                todos: [newTodo, ...state.todos],
+            };
+        case "DELETE":
+            filteredTodos = state.todos.filter(
+                (todo, index) => index !== action.payload.index
+            );
+            return {
+                ...state,
+                todos: filteredTodos,
+            };
+        default:
+            return state;
+    }
+};
 
 export default addReducer;

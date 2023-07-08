@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import NewTodo from "./NewTodo";
-import Todo from "./Todo";
+import React, { Fragment, useState } from "react";
+import NewTodo from "Components/NewTodo";
+import Todo from "Components/Todo";
 import { useSelector } from "react-redux";
 
 export default function Todos() {
@@ -12,31 +12,34 @@ export default function Todos() {
     setShowNewTodoForm(true);
   };
 
-  const handleNewSave = () => {
+  const onSave = () => {
     setShowNewTodoForm(false);
   };
 
   return (
-    <div>
-      <h1>Add Tasks</h1>
-      <button onClick={handleCreate}>Create</button>
-      <br />
-      <br />
-      <div className="todo-container">
-        <div className="todos-row">
+    <Fragment>
+      <h1 className="todos__title">Add Tasks</h1>
+      <button
+        className="todos__button todos__button--create"
+        onClick={handleCreate}
+      >
+        Create
+      </button>
+      <div className="todos__container">
+        <div className="todos__row">
           {showNewTodoForm && (
-            <NewTodo className="todo-item" handleNewSave={handleNewSave} />
+            <NewTodo className="todos__item" onSave={onSave} />
           )}
-          {todos.map((todo, index) => (
+          {todos.map((todo) => (
             <Todo
-              className="todo-item"
-              key={index}
+              className="todos__item"
+              key={todo.id}
               text={todo.text}
-              created_at={todo.created_at}
+              createdAt={todo.createdAt}
             />
           ))}
         </div>
       </div>
-    </div>
+    </Fragment>
   );
 }

@@ -1,44 +1,38 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { addTodo } from '../services/actions/addTodo';
+import React, { Fragment, useState } from "react";
+import { useDispatch } from "react-redux";
+import { addTodo } from "services/actions/addTodo";
+import PropTypes from "prop-types";
+import { TYPE_SUBMIT, TYPE_TEXT } from "Common/constants";
 
-export default function NewTodo(props) {
-  const { handleNewSave } = props;
-  const [todoText, setTodoText] = useState("");
-
+export default function NewTodo({ onSave }) {
   const dispatch = useDispatch();
+  const [todo, setTodo] = useState(null);
 
-  const formatedDate = () => {
-    const today = new Date();
-    const day = String(today.getDate()).padStart(2, "0");
-    const month = String(today.getMonth() + 1).padStart(2, "0"); // Month is zero-based
-    const year = today.getFullYear();
-    return `${day}.${month}.${year}`;
-  };
-
-
-  const handleSubmit = (e) => {
+  const handleFormSubmit = (event) => {
     dispatch(
       addTodo({
-        text: todoText,
-        created_at: formatedDate(),
+        text: todo,
       })
     );
-    e.preventDefault();
-    handleNewSave(todoText);
-    setTodoText("");
+    event.preventDefault();
+    onSave(todo);
+    setTodo(null);
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
+    <Fragment>
+      <form onSubmit={handleFormSubmit}>
         <input
-          type="text"
-          value={todoText}
-          onChange={(e) => setTodoText(e.target.value)}
+          type={TYPE_TEXT}
+          value={todo}
+          onChange={(event) => setTodo(event.target.value)}
         />
-        <button type="submit">Add Task</button>
+        <button type={TYPE_SUBMIT}>Add Task</button>
       </form>
-    </div>
+    </Fragment>
   );
 }
+
+NewTodo.propTypes = {
+  onNewSave: PropTypes.func.isRequired,
+};
