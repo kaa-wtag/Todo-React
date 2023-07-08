@@ -12,7 +12,7 @@ export default function Todos() {
     setShowNewTodoForm(true);
   };
 
-  const onNewSave = () => {
+  const onSave = () => {
     setShowNewTodoForm(false);
   };
 
@@ -28,9 +28,9 @@ export default function Todos() {
       <div className="todos__container">
         <div className="todos__row">
           {showNewTodoForm && (
-            <NewTodo className="todos__item" onNewSave={onNewSave} />
+            <NewTodo className="todos__item" onSave={onSave} />
           )}
-          {todos.map((todo, index) => (
+          {todos.map((todo) => (
             <Todo
               className="todos__item"
               key={todo.id}

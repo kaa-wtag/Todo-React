@@ -1,16 +1,15 @@
 import React from "react";
-import logo from "Assets/images/logo.png";
-import search from "Assets/images/search.png";
+import { ICON_LOGO, ICON_SEARCH, ALT_TEXT_LOGO, ALT_TEXT_SEARCH_ICON } from "Common/constants";
 
 const Navbar = () => {
   return (
     <div className="navbar">
-      <div className="logo">
-        <img src={logo} alt="Logo" />
-        <h1>Todos</h1>
+      <div className="navbar__logo">
+        <img src={ICON_LOGO} alt={ALT_TEXT_LOGO} />
+        <h1 className="navbar__title">Todos</h1>
       </div>
-      <div className="search-button-container">
-        <img src={search} alt="Search" />
+      <div className="navbar__search-button-container">
+        <img src={ICON_SEARCH} alt={ALT_TEXT_SEARCH_ICON} />
       </div>
     </div>
   );
