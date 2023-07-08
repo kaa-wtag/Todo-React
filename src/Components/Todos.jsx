@@ -34,6 +34,7 @@ export default function Todos() {
             <Todo
               className="todos__item"
               key={todo.id}
+              id={todo.id}
               text={todo.text}
               createdAt={todo.createdAt}
             />

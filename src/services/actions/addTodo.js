@@ -1,29 +1,19 @@
 export const addTodo = (props) => {
-    const { text, created_at } = props;
+    const { text } = props;
     return {
         type: "ADD",
         payload: {
             text: text,
-            createdAt: createdAt,
         },
     };
 };
 
 
-export const deleteTodo = (index) => {
+export const deleteTodo = (id) => {
     return {
         type: "DELETE",
         payload: {
-            index: index,
-        },
-    };
-};
-
-export const deleteTodo = (index) => {
-    return {
-        type: "DELETE",
-        payload: {
-            index: index,
+            id: id,
         },
     };
 };

@@ -21,12 +21,10 @@ const addReducer = (state = initialTodos, action) => {
                 todos: [newTodo, ...state.todos],
             };
         case "DELETE":
-            filteredTodos = state.todos.filter(
-                (todo, index) => index !== action.payload.index
-            );
+            const updatedTodos = state.todos.filter((todo) => todo.id !== action.payload.id);
             return {
                 ...state,
-                todos: filteredTodos,
+                todos: updatedTodos,
             };
         default:
             return state;

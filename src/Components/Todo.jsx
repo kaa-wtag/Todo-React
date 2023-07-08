@@ -1,13 +1,10 @@
 import { identifier } from "@babel/types";
 import React from "react";
 import { useDispatch } from "react-redux";
-import delete_btn from "../assets/delete.png";
-import { deleteTodo } from "../services/actions/addTodo";
+import delete_btn from "Assets/images/delete.png";
+import { deleteTodo } from "services/actions/addTodo";
 
 export default function Todo({ id, text, createdAt }) {
-  // // eslint-disable-next-line no-debugger
-  // debugger;
-  console.log(id)
   const dispatch = useDispatch();
 
   const handleDelete = () => {
