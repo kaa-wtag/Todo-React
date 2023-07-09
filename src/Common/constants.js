@@ -2,8 +2,6 @@ import searchIcon from "Assets/images/search.png";
 import logoIcon from "Assets/images/logo.png";
 import deleteIcon from "Assets/images/delete.png";
 
-
-
 export const ICON_SEARCH = searchIcon;
 export const ICON_LOGO = logoIcon;
 export const ICON_DELETE = deleteIcon;
