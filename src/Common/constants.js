@@ -1,8 +1,6 @@
 import searchIcon from "Assets/images/search.png";
 import logoIcon from "Assets/images/logo.png";
 
-
-
 export const ICON_SEARCH = searchIcon;
 export const ICON_LOGO = logoIcon;
 
