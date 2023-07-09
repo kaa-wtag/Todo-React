@@ -1,7 +1,14 @@
-import React from "react";
+import React, { Fragment } from "react";
+import Navbar from "Components/Navbar";
+import Todos from "Components/Todos";
 
 function Home() {
-  return <div>Todo home</div>;
+  return (
+    <Fragment>
+      <Navbar />
+      <Todos />
+    </Fragment>
+  );
 }
 
 export default Home;
