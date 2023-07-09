@@ -6,20 +6,26 @@ const initialTodos = {
 };
 
 const addReducer = (state = initialTodos, action) => {
-  switch (action.type) {
-    case "ADD":
-      const newTodo = {
-        id: uuidv4(),
-        text: action.payload.text,
-        createdAt: formatDate(),
-      };
-      return {
-        ...state,
-        todos: [newTodo, ...state.todos],
-      };
-    default:
-      return state;
-  }
+    switch (action.type) {
+        case "ADD":
+            const newTodo = {
+                id: uuidv4(),
+                text: action.payload.text,
+                createdAt: formatDate(),
+            };
+            return {
+                ...state,
+                todos: [newTodo, ...state.todos],
+            };
+        case "DELETE":
+            const updatedTodos = state.todos.filter((todo) => todo.id !== action.payload.id);
+            return {
+                ...state,
+                todos: updatedTodos,
+            };
+        default:
+            return state;
+    }
 };
 
 export default addReducer;
