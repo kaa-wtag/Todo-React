@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
 import { addTodo } from "services/actions/todo";
 import { TYPE_SUBMIT, TYPE_TEXT } from "Common/constants";
-import { generateTodoObject } from "Helpers/newTodoHelpers"
+import { generateTodoObject } from "Helpers/todoObjectHelpers"
 
 export default function NewTodo({ onSave }) {
   const dispatch = useDispatch();
