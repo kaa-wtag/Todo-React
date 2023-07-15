@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from "react";
+import { useSelector } from "react-redux";
 import NewTodo from "Components/NewTodo";
 import Todo from "Components/Todo";
-import { useSelector } from "react-redux";
 import Button from "Components/Button";
 
 export default function Todos() {
