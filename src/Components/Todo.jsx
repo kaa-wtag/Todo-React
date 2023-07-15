@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { useDispatch } from "react-redux";
 import PropTypes from "prop-types";
-import { deleteTodo } from "services/actions/actions";
+import { deleteTodo } from "services/actions/todo";
 import {
   ICON_DELETE,
   ALT_TEXT_DELETE,
