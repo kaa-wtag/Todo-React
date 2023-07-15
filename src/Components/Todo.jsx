@@ -1,13 +1,12 @@
-import { identifier } from "@babel/types";
-import React from "react";
+import React, { Fragment } from "react";
 import { useDispatch } from "react-redux";
-import delete_btn from "Assets/images/delete.png";
+import PropTypes from "prop-types";
 import { deleteTodo } from "services/actions/actions";
 import {
   ICON_DELETE,
-  IALT_TEXT_DELETE,
   ALT_TEXT_DELETE,
 } from "Common/constants";
+import Button from "./Button";
 
 export default function Todo({ id, text, createdAt }) {
   const dispatch = useDispatch();
@@ -16,15 +15,21 @@ export default function Todo({ id, text, createdAt }) {
     dispatch(deleteTodo(id));
   };
 
+
   return (
-    <div className="todo-card">
-      <h1 className="todo-card-title">{text}</h1>
-      <p className="todo-card-text">
+    <Fragment>
+      <h1>{text}</h1>
+      <p>
         <strong>Created at: {createdAt}</strong>
       </p>
-      <button onClick={handleDelete}>
+      <Button onClick={handleDelete}>
         <img src={ICON_DELETE} alt={ALT_TEXT_DELETE} />
-      </button>
-    </div>
+      </Button>
+    </Fragment>
   );
 }
+
+Todo.propTypes = {
+  text: PropTypes.string.isRequired,
+  createdAt: PropTypes.string.isRequired,
+};

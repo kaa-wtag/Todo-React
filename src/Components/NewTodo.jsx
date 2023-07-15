@@ -1,38 +1,34 @@
 import React, { Fragment, useState } from "react";
 import { useDispatch } from "react-redux";
-import { addTodo } from "services/actions/actions";
 import PropTypes from "prop-types";
+import Button from "Components/Button";
+import { addTodo } from "services/actions/todo";
 import { TYPE_SUBMIT, TYPE_TEXT } from "Common/constants";
+import { generateTodoObject } from "Helpers/todoObjectHelpers";
 
 export default function NewTodo({ onSave }) {
   const dispatch = useDispatch();
-  const [todo, setTodo] = useState(null);
+  const [todoText, setTodoText] = useState(null);
 
   const handleFormSubmit = (event) => {
-    dispatch(
-      addTodo({
-        text: todo,
-      })
-    );
+    dispatch(addTodo(generateTodoObject(todoText)));
     event.preventDefault();
-    onSave(todo);
-    setTodo(null);
+    onSave(todoText);
+    setTodoText(null);
   };
 
   return (
-    <Fragment>
-      <form onSubmit={handleFormSubmit}>
-        <input
-          type={TYPE_TEXT}
-          value={todo}
-          onChange={(event) => setTodo(event.target.value)}
-        />
-        <button type={TYPE_SUBMIT}>Add Task</button>
-      </form>
-    </Fragment>
+    <form onSubmit={handleFormSubmit}>
+      <input
+        type={TYPE_TEXT}
+        value={todoText}
+        onChange={(event) => setTodoText(event.target.value)}
+      />
+      <Button type={TYPE_SUBMIT}>Add Task</Button>
+    </form>
   );
 }
 
 NewTodo.propTypes = {
-  onNewSave: PropTypes.func.isRequired,
+  onSave: PropTypes.func.isRequired,
 };
