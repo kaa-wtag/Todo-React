@@ -1,7 +1,7 @@
-import React, { Fragment, useState } from "react";
+import React, { useState } from "react";
+import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
 import { addTodo } from "services/actions/addTodo";
-import PropTypes from "prop-types";
 import { TYPE_SUBMIT, TYPE_TEXT } from "Common/constants";
 
 export default function NewTodo({ onSave }) {
@@ -20,19 +20,17 @@ export default function NewTodo({ onSave }) {
   };
 
   return (
-    <Fragment>
-      <form onSubmit={handleFormSubmit}>
-        <input
-          type={TYPE_TEXT}
-          value={todo}
-          onChange={(event) => setTodo(event.target.value)}
-        />
-        <button type={TYPE_SUBMIT}>Add Task</button>
-      </form>
-    </Fragment>
+    <form onSubmit={handleFormSubmit}>
+      <input
+        type={TYPE_TEXT}
+        value={todo}
+        onChange={(event) => setTodo(event.target.value)}
+      />
+      <button type={TYPE_SUBMIT}>Add Task</button>
+    </form>
   );
 }
 
 NewTodo.propTypes = {
-  onNewSave: PropTypes.func.isRequired,
+  onSave: PropTypes.func.isRequired,
 };

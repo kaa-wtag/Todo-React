@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 export default function Todo({ text, createdAt }) {
   return (
@@ -10,3 +11,8 @@ export default function Todo({ text, createdAt }) {
     </div>
   );
 }
+
+Todo.propTypes = {
+  text: PropTypes.string.isRequired,
+  createdAt: PropTypes.string.isRequired,
+};
