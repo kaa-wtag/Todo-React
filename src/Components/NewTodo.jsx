@@ -1,30 +1,29 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
-import { addTodo } from "services/actions/addTodo";
+import { addTodo } from "services/actions/todo";
 import { TYPE_SUBMIT, TYPE_TEXT } from "Common/constants";
+import { generateTodoObject } from "Helpers/newTodoHelpers"
 
 export default function NewTodo({ onSave }) {
   const dispatch = useDispatch();
-  const [todo, setTodo] = useState(null);
+  const [todoText, setTodoText] = useState(null);
 
   const handleFormSubmit = (event) => {
     dispatch(
-      addTodo({
-        text: todo,
-      })
+      addTodo(generateTodoObject(todoText))
     );
     event.preventDefault();
-    onSave(todo);
-    setTodo(null);
+    onSave(todoText);
+    setTodoText(null);
   };
 
   return (
     <form onSubmit={handleFormSubmit}>
       <input
         type={TYPE_TEXT}
-        value={todo}
-        onChange={(event) => setTodo(event.target.value)}
+        value={todoText}
+        onChange={(event) => setTodoText(event.target.value)}
       />
       <button type={TYPE_SUBMIT}>Add Task</button>
     </form>
