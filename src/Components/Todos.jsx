@@ -18,27 +18,13 @@ export default function Todos() {
 
   return (
     <Fragment>
-      <h1 className="todos__title">Add Tasks</h1>
-      <button
-        className="todos__button todos__button--create"
-        onClick={handleCreate}
-      >
-        Create
-      </button>
-      <div className="todos__container">
-        <div className="todos__row">
-          {showNewTodoForm && (
-            <NewTodo className="todos__item" onSave={onSave} />
-          )}
-          {todos.map((todo) => (
-            <Todo
-              className="todos__item"
-              key={todo.id}
-              text={todo.text}
-              createdAt={todo.createdAt}
-            />
-          ))}
-        </div>
+      <h1>Add Tasks</h1>
+      <button onClick={handleCreate}>Create</button>
+      <div>
+        {showNewTodoForm && <NewTodo onSave={onSave} />}
+        {todos.map((todo) => (
+          <Todo key={todo.id} text={todo.text} createdAt={todo.createdAt} />
+        ))}
       </div>
     </Fragment>
   );

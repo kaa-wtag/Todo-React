@@ -1,14 +1,14 @@
-import React from "react";
+import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 
 export default function Todo({ text, createdAt }) {
   return (
-    <div className="todo-card">
-      <h1 className="todo-card-title">{text}</h1>
-      <p className="todo-card-text">
+    <Fragment>
+      <h1>{text}</h1>
+      <p>
         <strong>Created at: {createdAt}</strong>
       </p>
-    </div>
+    </Fragment>
   );
 }
 
