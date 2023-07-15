@@ -2,10 +2,7 @@ import React, { Fragment } from "react";
 import { useDispatch } from "react-redux";
 import PropTypes from "prop-types";
 import { deleteTodo } from "services/actions/todo";
-import {
-  ICON_DELETE,
-  ALT_TEXT_DELETE,
-} from "Common/constants";
+import { ICON_DELETE, ALT_TEXT_DELETE } from "Common/constants";
 import Button from "./Button";
 
 export default function Todo({ id, text, createdAt }) {
@@ -14,7 +11,6 @@ export default function Todo({ id, text, createdAt }) {
   const handleDelete = () => {
     dispatch(deleteTodo(id));
   };
-
 
   return (
     <Fragment>
@@ -30,6 +26,7 @@ export default function Todo({ id, text, createdAt }) {
 }
 
 Todo.propTypes = {
+  id: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
   createdAt: PropTypes.string.isRequired,
 };
