@@ -1,6 +1,6 @@
 export const addTodo = (props) => {
-    return {
-        type: "ADD",
-        payload: props,
-    };
+  return {
+    type: "ADD",
+    payload: props,
+  };
 };
