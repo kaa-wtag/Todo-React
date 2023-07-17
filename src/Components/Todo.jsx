@@ -40,9 +40,14 @@ export default function Todo({ id, text, createdAt, isCompleted, completedIn }) 
     dispatch(editTodoText(id, editedText));
   };
 
-  const handleCancelEdit= () => {
+  const handleCancelEdit = () => {
     setEditMode(false);
     setEditedText(text);
+  };
+
+  const handleEditAndDone = () => {
+    handleSave();
+    handleDone();
   };
 
   return (
@@ -67,7 +72,7 @@ export default function Todo({ id, text, createdAt, isCompleted, completedIn }) 
       <ImageButton
         src={ICON_CHECK}
         alt={ALT_TEXT_CHECK}
-        onClick={handleDone}
+        onClick={editMode ? handleEditAndDone : handleDone}
         hide={isCompleted}
       />
       {!editMode && (
