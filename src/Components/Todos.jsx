@@ -2,7 +2,6 @@ import React, { Fragment, useState } from "react";
 import { useSelector } from "react-redux";
 import NewTodo from "Components/NewTodo";
 import Todo from "Components/Todo";
-import Button from "Components/Button";
 
 export default function Todos() {
   const todos = useSelector((state) => state.todos);
@@ -20,7 +19,7 @@ export default function Todos() {
   return (
     <Fragment>
       <h1>Add Tasks</h1>
-      <Button onClick={handleCreate}>Create</Button>
+      <button onClick={handleCreate}>Create</button>
       <div>
         {showNewTodoForm && <NewTodo onSave={onSave} />}
         {todos.map((todo) => (

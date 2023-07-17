@@ -9,7 +9,7 @@ import {
   ALT_TEXT_CHECK,
 } from "Common/constants";
 import { formatDate } from "Helpers/dateFormatehelpers";
-import Button from "Components/Button";
+import ImageButton from "Components/ImageButton";
 
 export default function Todo({ id, text, createdAt, isCompleted }) {
   const dispatch = useDispatch();
@@ -19,7 +19,6 @@ export default function Todo({ id, text, createdAt, isCompleted }) {
   };
 
   const handleDone = () => {
-    console.log(isCompleted)
     if (!isCompleted) {
       dispatch(markDone(id));
     }
@@ -33,14 +32,17 @@ export default function Todo({ id, text, createdAt, isCompleted }) {
       <p>
         <strong>Created at: {formatDate(createdAt)}</strong>
       </p>
-      {!isCompleted && (
-        <Button onClick={handleDone}>
-          <img src={ICON_CHECK} alt={ALT_TEXT_CHECK} />
-        </Button>
-      )}
-      <Button onClick={handleDelete}>
-        <img src={ICON_DELETE} alt={ALT_TEXT_DELETE} />
-      </Button>
+      <ImageButton
+        src={ICON_CHECK}
+        alt={ALT_TEXT_CHECK}
+        onClick={handleDone}
+        disabled={isCompleted}
+      />
+      <ImageButton
+        src={ICON_DELETE}
+        alt={ALT_TEXT_DELETE}
+        onClick={handleDelete}
+      />
     </Fragment>
   );
 }
