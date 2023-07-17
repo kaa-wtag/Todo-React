@@ -26,7 +26,7 @@ export default function Todo({ id, text, createdAt, isCompleted }) {
 
   return (
     <Fragment>
-      <h1 style={isCompleted && { textDecoration: "line-through", color: "green" } }>
+      <h1 style={isCompleted ? { textDecoration: "line-through", color: "green" } : {}}>
         {text}
       </h1>
       <p>
@@ -36,7 +36,7 @@ export default function Todo({ id, text, createdAt, isCompleted }) {
         src={ICON_CHECK}
         alt={ALT_TEXT_CHECK}
         onClick={handleDone}
-        disabled={isCompleted}
+        hide={isCompleted}
       />
       <ImageButton
         src={ICON_DELETE}
