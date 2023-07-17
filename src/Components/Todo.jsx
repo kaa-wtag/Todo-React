@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { deleteTodo } from "services/actions/todo";
 import { ICON_DELETE, ALT_TEXT_DELETE } from "Common/constants";
 import { formatDate } from "Helpers/dateFormatehelpers";
-import Button from "Components/Button";
+import ImageButton from "Components/ImageButton";
 
 export default function Todo({ id, text, createdAt }) {
   const dispatch = useDispatch();
@@ -19,9 +19,11 @@ export default function Todo({ id, text, createdAt }) {
       <p>
         <strong>Created at: {formatDate(createdAt)}</strong>
       </p>
-      <Button onClick={handleDelete}>
-        <img src={ICON_DELETE} alt={ALT_TEXT_DELETE} />
-      </Button>
+      <ImageButton
+        src={ICON_DELETE}
+        alt={ALT_TEXT_DELETE}
+        onClick={handleDelete}
+      />
     </Fragment>
   );
 }
