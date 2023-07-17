@@ -27,7 +27,7 @@ export default function Todo({ id, text, createdAt, isCompleted }) {
 
   return (
     <Fragment>
-      <h1 style={isCompleted ? { textDecoration: "line-through", color: "green" } : {}}>
+      <h1 style={isCompleted && { textDecoration: "line-through", color: "green" } }>
         {text}
       </h1>
       <p>
