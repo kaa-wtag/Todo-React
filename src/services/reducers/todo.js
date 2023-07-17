@@ -1,46 +1,46 @@
 import { calculateCompletedDays } from "Helpers/dateTimeUtils";
 
 const initialTodos = {
-    todos: [],
+  todos: [],
 };
 
 const todoReducer = (state = initialTodos, action) => {
-    switch (action.type) {
-        case "ADD":
-            return {
-                ...state,
-                todos: [
-                    action.payload,
-                    ...state.todos,
-                ],
-            };
+  switch (action.type) {
+    case "ADD":
+      return {
+        ...state,
+        todos: [
+          action.payload,
+          ...state.todos,
+        ],
+      };
 
-        case "DELETE_TODO":
-            const updatedTodos = state.todos.filter((todo) => todo.id !== action.payload);
-            return {
-                ...state,
-                todos: updatedTodos,
-            };
+    case "DELETE_TODO":
+      const updatedTodos = state.todos.filter((todo) => todo.id !== action.payload);
+      return {
+        ...state,
+        todos: updatedTodos,
+      };
 
-        case "MARK_DONE":
-            const markedTodos = state.todos.map((todo) => {
-                if (todo.id === action.payload) {
-                    return {
-                        ...todo,
-                        isCompleted: true,
-                        completedIn: calculateCompletedDays(todo.createdAt),
-                    };
-                }
-                return todo;
-            });
-            return {
-                ...state,
-                todos: markedTodos,
-            };
+    case "MARK_DONE":
+      const markedTodos = state.todos.map((todo) => {
+        if (todo.id === action.payload) {
+          return {
+            ...todo,
+            isCompleted: true,
+            completedIn: calculateCompletedDays(todo.createdAt),
+          };
+        }
+        return todo;
+      });
+      return {
+        ...state,
+        todos: markedTodos,
+      };
 
-        default:
-            return state;
-    }
+    default:
+      return state;
+  }
 };
 
 export default todoReducer;
