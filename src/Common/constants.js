@@ -11,7 +11,7 @@ export const ICON_DELETE = deleteIcon;
 export const ALT_TEXT_CHECK = "Check";
 export const ALT_TEXT_SEARCH_ICON = "Search Icon";
 export const ALT_TEXT_LOGO = "Logo";
-export const ALT_TEXT_DELETE = "Delete";
+export const ALT_TEXT_DELETE = "Delete Button";
 
 export const TYPE_SUBMIT = "submit";
 export const TYPE_TEXT = "text";

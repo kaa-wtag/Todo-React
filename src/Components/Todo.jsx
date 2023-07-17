@@ -8,7 +8,8 @@ import {
   ALT_TEXT_DELETE,
   ALT_TEXT_CHECK,
 } from "Common/constants";
-import Button from "./Button";
+import { formatDate } from "Helpers/dateFormatehelpers";
+import Button from "Components/Button";
 
 export default function Todo({ id, text, createdAt, isCompleted }) {
   const dispatch = useDispatch();
@@ -30,7 +31,7 @@ export default function Todo({ id, text, createdAt, isCompleted }) {
         {text}
       </h1>
       <p>
-        <strong>Created at: {createdAt}</strong>
+        <strong>Created at: {formatDate(createdAt)}</strong>
       </p>
       {!isCompleted && (
         <Button onClick={handleDone}>
@@ -47,6 +48,6 @@ export default function Todo({ id, text, createdAt, isCompleted }) {
 Todo.propTypes = {
   id: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
-  createdAt: PropTypes.string.isRequired,
+  createdAt: PropTypes.instanceOf(Date).isRequired,
   isCompleted: PropTypes.bool.isRequired,
 };

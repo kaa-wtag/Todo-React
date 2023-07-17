@@ -13,8 +13,8 @@ const todoReducer = (state = initialTodos, action) => {
         ],
       };
 
-    case "DELETE":
-      const updatedTodos = state.todos.filter((todo) => todo.id !== action.payload.id);
+    case "DELETE_TODO":
+      const updatedTodos = state.todos.filter((todo) => todo.id !== action.payload);
       return {
         ...state,
         todos: updatedTodos,
