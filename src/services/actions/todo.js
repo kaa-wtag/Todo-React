@@ -11,3 +11,10 @@ export const deleteTodo = (id) => {
     payload: id,
   };
 };
+
+export const markDone = (id) => {
+  return {
+    type: "MARK_DONE",
+    payload: id,
+  };
+};

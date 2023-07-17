@@ -28,6 +28,8 @@ export default function Todos() {
               id={todo.id}
               text={todo.text}
               createdAt={todo.createdAt}
+              isCompleted={todo.isCompleted}
+              completedIn={todo.completedIn ? todo.completedIn : null}
             />
           ))}
       </div>

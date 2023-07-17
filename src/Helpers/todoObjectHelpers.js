@@ -5,5 +5,6 @@ export const generateTodoObject = (text) => {
     id: uuidv4(),
     text: text,
     createdAt: new Date(),
+    isCompleted: false,
   };
 };

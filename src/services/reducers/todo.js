@@ -1,3 +1,5 @@
+import { calculateCompletedDays } from "Helpers/dateTimeUtils";
+
 const initialTodos = {
   todos: [],
 };
@@ -18,6 +20,22 @@ const todoReducer = (state = initialTodos, action) => {
       return {
         ...state,
         todos: updatedTodos,
+      };
+
+    case "MARK_DONE":
+      const markedTodos = state.todos.map((todo) => {
+        if (todo.id === action.payload) {
+          return {
+            ...todo,
+            isCompleted: true,
+            completedIn: calculateCompletedDays(todo.createdAt),
+          };
+        }
+        return todo;
+      });
+      return {
+        ...state,
+        todos: markedTodos,
       };
 
     default:
