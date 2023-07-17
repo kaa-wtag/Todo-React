@@ -1,8 +1,8 @@
 import React, { Fragment, useState } from "react";
 import { useDispatch } from "react-redux";
 import PropTypes from "prop-types";
-import Button from "Components/Button";
 import { addTodo } from "services/actions/todo";
+import Button from "Components/Button";
 import { TYPE_SUBMIT, TYPE_TEXT } from "Common/constants";
 import { generateTodoObject } from "Helpers/todoObjectHelpers";
 
