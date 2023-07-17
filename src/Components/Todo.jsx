@@ -40,6 +40,11 @@ export default function Todo({ id, text, createdAt, isCompleted, completedIn }) 
     dispatch(editTodoText(id, editedText));
   };
 
+  const handleCancelEdit= () => {
+    setEditMode(false);
+    setEditedText(text);
+  };
+
   return (
     <Fragment>
       {editMode ? (
@@ -76,7 +81,7 @@ export default function Todo({ id, text, createdAt, isCompleted, completedIn }) 
       <ImageButton
         src={ICON_DELETE}
         alt={ALT_TEXT_DELETE}
-        onClick={handleDelete}
+        onClick={editMode ? handleCancelEdit : handleDelete}
       />
       {completedIn && <CompletedInMessage completedIn={completedIn} />}
     </Fragment>
