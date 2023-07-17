@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
-import Button from "Components/Button";
 import { addTodo } from "services/actions/todo";
 import { TYPE_SUBMIT, TYPE_TEXT } from "Common/constants";
 import { generateTodoObject } from "Helpers/todoObjectHelpers";
@@ -24,7 +23,7 @@ export default function NewTodo({ onSave }) {
         value={todoText}
         onChange={(event) => setTodoText(event.target.value)}
       />
-      <Button type={TYPE_SUBMIT}>Add Task</Button>
+      <button type={TYPE_SUBMIT}>Add Task</button>
     </form>
   );
 }
