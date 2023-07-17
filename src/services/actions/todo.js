@@ -7,7 +7,7 @@ export const addTodo = (props) => {
 
 export const deleteTodo = (id) => {
   return {
-    type: "DELETE",
+    type: "DELETE_TODO",
     payload: {
       id: id,
     },
