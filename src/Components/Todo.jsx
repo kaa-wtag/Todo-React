@@ -8,10 +8,11 @@ import {
   ALT_TEXT_DELETE,
   ALT_TEXT_CHECK,
 } from "Common/constants";
-import { formatDate } from "Helpers/dateFormatehelpers";
+import { formatDate } from "Helpers/dateTimeUtils";
 import ImageButton from "Components/ImageButton";
+import CompletedInMessage from "Components/CompletedInMessage";
 
-export default function Todo({ id, text, createdAt, isCompleted }) {
+export default function Todo({ id, text, createdAt, isCompleted, completedIn }) {
   const dispatch = useDispatch();
 
   const handleDelete = () => {
@@ -19,9 +20,7 @@ export default function Todo({ id, text, createdAt, isCompleted }) {
   };
 
   const handleDone = () => {
-    if (!isCompleted) {
-      dispatch(markDone(id));
-    }
+    dispatch(markDone(id));
   };
 
   return (
@@ -43,6 +42,8 @@ export default function Todo({ id, text, createdAt, isCompleted }) {
         alt={ALT_TEXT_DELETE}
         onClick={handleDelete}
       />
+      {completedIn && <CompletedInMessage completedIn={completedIn} />}
+
     </Fragment>
   );
 }
@@ -52,4 +53,5 @@ Todo.propTypes = {
   text: PropTypes.string.isRequired,
   createdAt: PropTypes.instanceOf(Date).isRequired,
   isCompleted: PropTypes.bool.isRequired,
+  completedIn: PropTypes.string,
 };
