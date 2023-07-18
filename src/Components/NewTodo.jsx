@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import PropTypes from "prop-types";
+import React, { Fragment, useState } from "react";
 import { useDispatch } from "react-redux";
+import PropTypes from "prop-types";
 import { addTodo } from "services/actions/todo";
 import { TYPE_SUBMIT, TYPE_TEXT } from "Common/constants";
 import { generateTodoObject } from "Helpers/todoObjectHelpers";

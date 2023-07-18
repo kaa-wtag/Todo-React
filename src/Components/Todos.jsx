@@ -23,8 +23,13 @@ export default function Todos() {
       <div>
         {showNewTodoForm && <NewTodo onSave={onSave} />}
         {todos.map((todo) => (
-          <Todo key={todo.id} text={todo.text} createdAt={todo.createdAt} />
-        ))}
+            <Todo
+              key={todo.id}
+              id={todo.id}
+              text={todo.text}
+              createdAt={todo.createdAt}
+            />
+          ))}
       </div>
     </Fragment>
   );

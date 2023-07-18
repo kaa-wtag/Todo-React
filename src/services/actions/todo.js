@@ -4,3 +4,10 @@ export const addTodo = (props) => {
     payload: props,
   };
 };
+
+export const deleteTodo = (id) => {
+  return {
+    type: "DELETE_TODO",
+    payload: id,
+  };
+};
